@@ -120,7 +120,7 @@ void mpu_stable_mqtt(char* subtopic_gyro, int interval)
 {
     mpu_update_6axis_diff();
     mpu_update_diff_average();
-    temp_stable = avg_diff_a>STABLE_ACC_THRESHOLD;
+    temp_stable = avg_diff_a<STABLE_ACC_THRESHOLD;
     if(temp_stable!=is_stable){
         is_stable=temp_stable;
         mqttpub_stable(subtopic_gyro, is_stable);

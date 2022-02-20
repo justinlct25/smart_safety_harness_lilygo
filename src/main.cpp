@@ -28,7 +28,8 @@ void init() {
 
   wifi_init();
   delay(500);
-  mqtt_init("Lock");
+  // mqtt_init("Lock");
+  mqtt_init("Harness");
   delay(500);
 }
 
@@ -53,8 +54,11 @@ void loop() {
 
     bat_show();
     mpu_update_6axis();
-    mpu_direction_mqtt("/lock", 20);
-    mpu_stable_mqtt("/lock", 20);
+    // mpu_direction_mqtt("/lock", 20);
+    // mpu_stable_mqtt("/lock", 20);
+    mpu_direction_mqtt("/harness", 20);
+    mpu_stable_mqtt("/harness", 20);
+
     // mpu_show();
     // mpu_update_diff_average();
     // mpu_show_diff();
