@@ -28,7 +28,7 @@ void init() {
 
   wifi_init();
   delay(500);
-  mqtt_init();
+  mqtt_init("Lock");
   delay(500);
 }
 
@@ -38,19 +38,29 @@ void setup() {
 
 void loop() {
 
-  if(millis() - loop_temp_time >= 500)
+  if(millis() - loop_temp_time >= 250)
   {
     loop_temp_time = millis();
     Serial.println("----------" + String(millis()) + "----------");
-
-    bat_show();
-    mpu_update_vars();
-    mpu_show();
+    
     if(!wifi_stat()){
       Serial.println("wifi not connected");
       wifi_init();
       delay(500);
+      mqtt_connect();
+      delay(500);
     }
-    mqttpub_lock();
+
+    bat_show();
+    mpu_update_6axis();
+    mpu_direction_mqtt("/lock", 20);
+    mpu_stable_mqtt("/lock", 20);
+    // mpu_show();
+    // mpu_update_diff_average();
+    // mpu_show_diff();
+
+    // mqttpub("Lock");
+    // mqttpub_lock();
+    // mqttpub_harness();
   }
 }

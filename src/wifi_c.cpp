@@ -1,9 +1,14 @@
 #include "wifi_c.h"
 
 // maximum 5 characters limited by downlink
-char wifi_ssid[50] = "trash";                          // "REPLACE_WITH_YOUR_SSID";
+// char wifi_ssid[50] = "trash";                          // "REPLACE_WITH_YOUR_SSID";
+// char wifi_ssid[50] = "TL23";
+char wifi_ssid[50] = "唔讀書";
 // must be integer provided by downlink
-char wifi_password[50] = "12345678";                   // "REPLACE_WITH_YOUR_PASSWORD";
+// char wifi_password[50] = "12345678";                   // "REPLACE_WITH_YOUR_PASSWORD";
+// char wifi_password[50] = "P@ss1234";                   // "REPLACE_WITH_YOUR_PASSWORD";
+char wifi_password[50] = "Jsn36879";                   // "REPLACE_WITH_YOUR_PASSWORD";
+
 
 // these are for NTPClient connection
 WiFiUDP ntpUDP;

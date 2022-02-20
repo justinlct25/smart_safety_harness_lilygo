@@ -11,17 +11,21 @@
 extern const char* mqtt_server;
 extern uint16_t mqtt_port;
 extern String s;
+extern char* mqtt_client_name;
 
-void mqtt_init();
+extern char* MQTT_TOPIC_DIRECTION;
+extern char* MQTT_TOPIC_STABLE;
+extern char* MQTT_SUBTOPIC_LOCK;
+extern char* MQTT_SUBTOPIC_HARNESS;
+
+void mqtt_connect();
+void mqtt_init(char* gyroName);
+void mqttpub(char* gyroName);
 void mqttpub_lock();
 void mqttpub_harness();
+void mqttpub_direction(char* gyroName, int direction);
+void mqttpub_stable(char* gyroName, bool isStable);
 
-extern int globx;
-extern int stickrot;
-extern int16_t distance;
-extern float bat;
-extern String sLatitude;
-extern String sLongitude;
 extern String sday, smonth, syear;
 extern String shour, sminute, ssecond, scentisecond;
 extern char* getuptime();
@@ -34,14 +38,5 @@ extern char cver[3][2];
 extern char nver[3][2];
 
 
-extern bool isperson;
-extern bool isbrake;
-extern bool isalert;
-extern bool isjoin;
-//extern bool isretry; //legacy
-//extern bool isend;   //legacy
-extern bool islateset;
-extern bool isstartup;
-extern bool alerted;
 
 #endif
