@@ -39,7 +39,7 @@ void setup() {
 
 void loop() {
 
-  if(millis() - loop_temp_time >= 500)
+  if(millis() - loop_temp_time >= 250)
   {
     loop_temp_time = millis();
     Serial.println("----------" + String(millis()) + "----------");
@@ -57,8 +57,8 @@ void loop() {
     Serial.println("direction, stable");
     // mpu_direction_mqtt("/lock", 20);
     // mpu_stable_mqtt("/lock", 20);
-    mpu_direction_mqtt("/harness", 10);
-    mpu_stable_mqtt("/harness", 10);
+    mpu_direction_mqtt("/harness", 20);
+    mpu_stable_mqtt("/harness", 20);
 
     // mpu_show();
     // mpu_update_diff_average();
