@@ -99,9 +99,10 @@ void mpu_update_diff_average()
     }
 }
 
-void mpu_direction_mqtt(char* subtopic_gyro, int interval)
+void mpu_direction_mqtt(char* subtopic_gyro, int interval) 
 {
     temp_direction = mpu_get_direction();
+    Serial.println(temp_direction);
     if(temp_direction!=d){
         d = temp_direction;
         mqttpub_direction(subtopic_gyro, d);
@@ -121,6 +122,7 @@ void mpu_stable_mqtt(char* subtopic_gyro, int interval)
     mpu_update_6axis_diff();
     mpu_update_diff_average();
     temp_stable = avg_diff_a<STABLE_ACC_THRESHOLD;
+    Serial.println(temp_stable);
     if(temp_stable!=is_stable){
         is_stable=temp_stable;
         mqttpub_stable(subtopic_gyro, is_stable);
